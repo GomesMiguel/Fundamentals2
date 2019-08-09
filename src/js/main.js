@@ -1,6 +1,12 @@
-import {animatedScrollTo} from './es6-scroll-to.js';
+import { animatedScrollTo } from "./es6-scroll-to.js";
 
-document.querySelector('.title').innerHTML = 'Great success!'
-document.querySelector('.text').innerHTML = 'Javascript is working!'
+const ctaEvent = () => {
+  console.log("Hello :D");
+};
+
+(() => {
+  console.log(document.getElementById("btn-contact"));
+  document.getElementById("btn-contact").onclick = ctaEvent;
+})();
 
 animatedScrollTo(500);
