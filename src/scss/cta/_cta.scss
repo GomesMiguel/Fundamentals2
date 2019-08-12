@@ -1,8 +1,12 @@
 @import "variables";
 
 .cta {
-  background-color: $background-color;
-  display: flex;
+  margin-bottom: 20px;
+
+  &__body {
+    background-color: $background-color;
+    display: flex;
+  }
 
   &--secondary {
     flex-direction: row-reverse;
