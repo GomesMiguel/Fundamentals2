@@ -4,4 +4,42 @@ body {
   margin: 0;
 }
 
+.contact {
+  font-size: 22px;
+  animation-duration: 2s;
+  animation-name: slidein;
+
+  &__content {
+    padding: 12px 10%;
+    background-color: rgb(58, 58, 105);
+    color: white;
+  }
+
+  &:before {
+    content: "";
+    display: block;
+    border-right: 12px solid white;
+    border-bottom: 12px solid rgb(58, 58, 105);
+    border-left: 12px solid white;
+    width: 0px;
+    margin-left: 10%;
+  }
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 200%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
 @import "cta/index";
