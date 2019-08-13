@@ -1,56 +1,25 @@
-// import { animatedScrollTo } from "./es6-scroll-to.js";
+const ctas = document.getElementsByClassName("cta");
 
-class StateCta {
-  constructor(number) {
-    this.state = (() => {
-      let newObj = {};
-      for (let i = 0; i < number; i++) {
-        newObj[`textBox${i ? i : ""}`] = false;
-      }
+class Cta {
+  constructor(element) {
+    this.btn = element.querySelector(".cta__btn");
+    this.textbox = element.querySelector(".cta__contact");
 
-      return { ...newObj };
-    })();
+    this.btn.addEventListener("click", this.handleClick.bind(this));
   }
 
-  stateLength = () => Object.keys(this.state).length;
+  get allOtherOpen() {
+    return Array.from(document.getElementsByClassName("cta__contact")).filter(
+      elem => elem !== this.textbox && !elem.classList.contains("hidden")
+    );
+  }
 
-  isOpen = () =>
-    Object.values(this.state).reduce((total, current) => total + current);
-
-  toggleCta = textBox => {
-    if (!this.isOpen() || this.state[textBox]) {
-      this.state = { ...this.state, [`${textBox}`]: !this.state[`${textBox}`] };
-      document.getElementById(textBox).classList.toggle("hidden");
-
-      return this.state;
-    } else {
-      let resetBtn = Object.entries(this.state).find(
-        elem => elem[1] === true
-      )[0];
-
-      this.state = {
-        ...this.state,
-        [`${textBox}`]: !this.state[`${textBox}`],
-        [`${resetBtn}`]: !this.state[`${resetBtn}`]
-      };
-      document.getElementById(resetBtn).classList.toggle("hidden");
-      document.getElementById(textBox).classList.toggle("hidden");
-
-      return this.state;
-    }
-  };
-
-  bindBtn = () => {
-    for (let i = 0; i < this.stateLength(); i++) {
-      document.getElementById(`btn${i ? i : ""}`).onclick = () => {
-        this.toggleCta(`textBox${i ? i : ""}`);
-      };
-    }
-  };
+  handleClick() {
+    this.allOtherOpen.forEach(elem => elem.classList.add("hidden"));
+    this.textbox.classList.toggle("hidden");
+  }
 }
 
-const state = new StateCta(2);
-
-state.bindBtn();
-
-// animatedScrollTo(500);
+const cta1 = new Cta(ctas[0]);
+const cta2 = new Cta(ctas[1]);
+const cta3 = new Cta(ctas[2]);
