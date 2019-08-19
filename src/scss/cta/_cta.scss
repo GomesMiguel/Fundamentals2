@@ -3,14 +3,15 @@
 .cta {
   margin-bottom: 20px;
 
+  // .cta--secondary
+  &--secondary {
+    padding: 20px 0;
+  }
+
+  // .cta__body
   &__body {
     background-color: $background-color;
     display: flex;
-  }
-
-  &--secondary {
-    flex-direction: row-reverse;
-    padding: 20px 0;
   }
 
   &__content {

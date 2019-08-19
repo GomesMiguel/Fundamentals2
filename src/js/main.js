@@ -1,4 +1,4 @@
-const ctas = document.getElementsByClassName("cta");
+// const ctas = document.getElementsByClassName("cta");
 
 class Cta {
   constructor(element) {
@@ -14,12 +14,14 @@ class Cta {
     );
   }
 
-  handleClick() {
+  handleClick(e) {
     this.allOtherOpen.forEach(elem => elem.classList.add("hidden"));
     this.textbox.classList.toggle("hidden");
   }
 }
 
-const cta1 = new Cta(ctas[0]);
-const cta2 = new Cta(ctas[1]);
-const cta3 = new Cta(ctas[2]);
+Array.from(document.getElementsByClassName("cta")).forEach(el => new Cta(el));
+
+// const cta1 = new Cta(ctas[0]);
+// const cta2 = new Cta(ctas[1]);
+// const cta3 = new Cta(ctas[2]);
